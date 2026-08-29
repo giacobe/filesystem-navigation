@@ -45,3 +45,25 @@ After a guest installation, validate all generated evidence through the intended
 ```
 
 See `LEVELS.md` for curriculum invariants and `TOOLSET.md` for baseline requirements.
+
+## Build the browser VM
+
+Use the `basic` configuration from
+[`giacobe/buildroot-builder2`](https://github.com/giacobe/buildroot-builder2),
+validated with Buildroot `2025.02.15`:
+
+```sh
+git clone https://github.com/giacobe/buildroot-builder2.git
+cd buildroot-builder2
+BUILDROOT_VERSION=2025.02.15 scripts/01-setup-buildroot.sh
+scripts/02-build-baseline.sh --config basic
+scripts/03-package-payload.sh \
+  --repo https://github.com/giacobe/filesystem-navigation.git \
+  --ref main \
+  --baseline artifacts/basic-<timestamp> \
+  --output artifacts/filesystem-navigation \
+  --output-prefix filesystem-navigation
+```
+
+Replace `<timestamp>` with the stage-2 artifact directory. Review the manifest
+and boot-test the exact generated `.bzImage` and `.rootfs.cpio.gz` pair in v86.
