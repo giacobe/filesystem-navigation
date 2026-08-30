@@ -1,4 +1,5 @@
 #!/bin/sh
+. "$INSTALL_ROOT/polylinux-common.sh"
 
 die() {
     echo "ERROR: $*" >&2
@@ -89,7 +90,7 @@ write_readme() {
     {
         echo "Theme: $(theme_field title)"
         echo "Learner: $USER_ID"
-        echo "Collection date: $currentDate"
+        echo "Exercise code: $EXERCISE_CODE"
         echo "************************************************************************"
         printf '%s\n' "$instructions"
     } > "$LEVEL_HOME/README.txt"
@@ -114,3 +115,6 @@ finish_level() {
     find "$CASE_DIR" -type f -exec chmod 640 {} \;
     chmod 700 "$LEVEL_HOME"
 }
+
+# Override the legacy catalog above with the shared themes-v1 catalog.
+. "$INSTALL_ROOT/polylinux-common.sh"
