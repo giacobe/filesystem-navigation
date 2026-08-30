@@ -28,7 +28,6 @@ For automated deployment:
 USER_ID=student@example.edu CURRENT_DATE=2026-07-31 ./install.sh --non-interactive --no-login
 ```
 
-The installer creates `level1` through `level10`, evidence under `/srv/filesystem-navigation/cases`, and root-only expected answers under `/var/lib/filesystem-navigation/answers`.
 
 ## Validation
 
@@ -67,3 +66,9 @@ scripts/03-package-payload.sh \
 
 Replace `<timestamp>` with the stage-2 artifact directory. Review the manifest
 and boot-test the exact generated `.bzImage` and `.rootfs.cpio.gz` pair in v86.
+
+## Standard runtime contract
+
+The current release uses the reversible PolyBandit exercise code, the versioned `seed-v1` deterministic seed, ten concurrent level generators, staged `README.txt` readiness, unrestricted `nextlevel`/`prevlevel` navigation, and no client-side answer store or checker. See `lab.json` for the authoritative level count, theme policy, Buildroot configuration, and browser artifact names.
+
+Do not rebuild the assigned Buildroot baseline merely to package this lab. Package the repository payload into the configuration named by `buildroot_configuration`, preserve the baseline kernel, and publish the resulting `packaged.bzImage` and `packaged.rootfs.cpio.gz`.

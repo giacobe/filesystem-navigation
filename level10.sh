@@ -16,6 +16,5 @@ ln -s "../archive/old/.vault/$file" "$CASE_DIR/aliases/archive"
 printf 'PROJECT=%s\nALIAS=aliases/current\nRECOVERY=recovery/%s\nREQUIRED_MODE=0640\nREQUIRED_LINK_COUNT=2\n' "$project" "$file" > "$CASE_DIR/TASK.txt"
 write_readme "Investigate data using TASK.txt. Resolve the stated symbolic alias, confirm its destination is hidden beneath the active project, verify mode 0640, and prove it shares an inode with the recovery name. Read the final artifact only after all clues agree.
 Answer format: exactly 16 Base64url characters. Case matters."
-record_answer "$answer"
 finish_level
 chmod 640 "$target"

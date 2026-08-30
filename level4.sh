@@ -17,5 +17,4 @@ answer="$branch/$section/$leaf"
 printf 'BRANCH=%s\nSECTION=%s\nMARKER=uniquely marked destination\n' "$branch" "$section" > "$CASE_DIR/TASK.txt"
 write_readme "Explore the directory tree under data. TASK.txt gives the branch, section, and content marker. Report the path of the matching file relative to data.
 Answer format: branch/section/filename with exact lowercase spelling and no leading ./"
-record_answer "$answer"
 finish_level

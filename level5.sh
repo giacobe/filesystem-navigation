@@ -21,5 +21,4 @@ mkdir "$CASE_DIR/search/active/$(theme_field item)-directory.dat"
 printf 'Search only data/search for a regular file named %s-*.dat whose exact size is %s bytes. Read its first line.\n' "$(theme_field item)" "$size" > "$CASE_DIR/TASK.txt"
 write_readme "Use find and the predicates in data/TASK.txt. Similar entries deliberately fail one condition.
 Answer format: exactly 12 Base64url characters. Case matters."
-record_answer "$answer"
 finish_level

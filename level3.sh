@@ -12,5 +12,4 @@ printf 'temporary data\n' > "$CASE_DIR/.cache-note"
 printf 'ordinary record\n' > "$CASE_DIR/$item.txt"
 write_readme "Hidden entries begin with a dot and ordinary ls output omits them. Find the hidden directory in data, then read the hidden file whose name ends in -key.
 Answer format: exactly 12 Base64url characters. Case matters."
-record_answer "$answer"
 finish_level

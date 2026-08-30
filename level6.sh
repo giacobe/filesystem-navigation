@@ -15,7 +15,6 @@ make_sized "$CASE_DIR/candidates/ordinary.dat" "$((size - 11))"
 printf 'Find the regular file in data/candidates with mode 0640 and exact size %s bytes. Report its filename without .dat.\n' "$size" > "$CASE_DIR/TASK.txt"
 write_readme "Use find with exact permission and byte-size predicates to compare the candidates against data/TASK.txt. Both the mode and exact byte size matter.
 Answer format: the lowercase filename stem only; omit .dat."
-record_answer "$answer"
 finish_level
 chmod 600 "$CASE_DIR/candidates/same-size.dat"
 chmod 640 "$CASE_DIR/candidates/$stem.dat" "$CASE_DIR/candidates/same-mode.dat"

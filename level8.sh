@@ -12,5 +12,4 @@ printf 'independent record\n' > "$CASE_DIR/recovery/other.dat"
 answer=$(printf '%s\n%s\n' "$first" "$second" | sort | awk 'NR==1 {a=$0} NR==2 {print a "|" $0}')
 write_readme "Find the two regular filenames under data/records and data/recovery that share one inode. Duplicate content is not sufficient evidence. Report just their basenames in lexical order.
 Answer format: name1|name2 including .dat, no spaces."
-record_answer "$answer"
 finish_level

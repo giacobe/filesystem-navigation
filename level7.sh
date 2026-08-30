@@ -12,5 +12,4 @@ printf 'decoy\n' > "$CASE_DIR/store/$folder/old-key.txt"
 ln -s "../store/$folder/$item-key.txt" "$CASE_DIR/links/current-key"
 write_readme "In data/links, distinguish the symbolic link current-key from the regular file that merely contains path text. Inspect the link target, follow it, and read the answer.
 Answer format: exactly 14 Base64url characters. Case matters."
-record_answer "$answer"
 finish_level

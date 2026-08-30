@@ -11,5 +11,4 @@ printf 'training record\n' > "$CASE_DIR/$root/$place/notes.txt"
 write_readme "Use this absolute path to read the answer file:
 /srv/filesystem-navigation/cases/level1/$root/$place/coordinates.txt
 Answer format: exactly 12 Base64url characters. Case matters."
-record_answer "$answer"
 finish_level

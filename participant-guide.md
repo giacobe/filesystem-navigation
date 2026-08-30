@@ -39,7 +39,6 @@ These commands do not require the previous answer. Reloading the browser VM rese
 
 Every `README.txt` gives the exact answer format. Case, punctuation, separators, filename extensions, and leading slashes matter. Do not add quotation marks or explanatory text. Submit one answer for each level through the exercise form.
 
-The local `checklevel` command may direct you to the external grader because protected answers are not readable by learner accounts.
 
 ## Command reference
 

@@ -12,5 +12,4 @@ printf 'not the requested record\n' > "$CASE_DIR/$root/work/$item.txt"
 printf 'Begin in data/%s/work/current. Without returning to your home directory, use a relative path that goes up twice, then enters archive/%s and reads %s.txt.\n' "$root" "$folder" "$item" > "$CASE_DIR/TASK.txt"
 write_readme "Read data/TASK.txt, change into its stated starting directory, and reach the answer using a relative path with .. components.
 Answer format: exactly 12 Base64url characters. Case matters."
-record_answer "$answer"
 finish_level

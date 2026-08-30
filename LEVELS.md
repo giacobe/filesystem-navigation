@@ -27,10 +27,7 @@ All semantic answers, target names, layouts, sizes, and theme choices are determ
 
 ## Grader interface
 
-Expected answers are stored root-only at:
 
 ```text
-/var/lib/filesystem-navigation/answers/level1
 ...
-/var/lib/filesystem-navigation/answers/level10
 ```
