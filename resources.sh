@@ -88,10 +88,6 @@ theme_field() {
 write_readme() {
     instructions=$1
     {
-        echo "Theme: $(theme_field title)"
-        echo "Learner: $USER_ID"
-        echo "Exercise code: $EXERCISE_CODE"
-        echo "************************************************************************"
         printf '%s\n' "$instructions"
     } > "$LEVEL_HOME/README.txt"
 }

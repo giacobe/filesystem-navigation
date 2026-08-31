@@ -12,7 +12,7 @@ Learn to move confidently through a Linux filesystem, including absolute and rel
 
 ## Starting the exercise
 
-Log in as `root`. The VM automatically starts the installer and asks for your email address. Confirm it carefully because your email, the exercise date, and protected exercise passwords determine your unique evidence and answers.
+Log in as `root`. The VM automatically starts the installer and asks for your email address. Confirm it carefully because your email, the exercise date, and protected seed values determine your unique evidence and answers.
 
 After installation you enter `level1`. Start each level with:
 
