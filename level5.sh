@@ -18,6 +18,13 @@ write_sized "$CASE_DIR/search/archive/$(theme_field item)-old.dat" "$((size + 1)
 write_sized "$CASE_DIR/search/active/unrelated.dat" "$size" decoy
 write_sized "$CASE_DIR/outside/$(theme_field item)-copy.dat" "$size" decoy
 mkdir "$CASE_DIR/search/active/$(theme_field item)-directory.dat"
+i=1
+while [ "$i" -le 48 ]; do
+    delta=$((i % 19 + 2))
+    write_sized "$CASE_DIR/search/active/$(theme_field item)-reference-$i.dat" "$((size + delta))" decoy
+    i=$((i + 1))
+done
+write_numbered_files "$CASE_DIR/search/archive" "unrelated-" ".dat" 24 "archive decoy"
 printf 'Search only data/search for a regular file named %s-*.dat whose exact size is %s bytes. Read its first line.\n' "$(theme_field item)" "$size" > "$CASE_DIR/TASK.txt"
 write_readme "Use find and the predicates in data/TASK.txt. Similar entries deliberately fail one condition.
 Answer format: exactly 12 Base64url characters. Case matters."

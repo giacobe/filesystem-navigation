@@ -9,6 +9,8 @@ printf 'shared underlying record\n' > "$CASE_DIR/records/$first"
 ln "$CASE_DIR/records/$first" "$CASE_DIR/recovery/$second"
 printf 'shared underlying record\n' > "$CASE_DIR/records/content-copy.dat"
 printf 'independent record\n' > "$CASE_DIR/recovery/other.dat"
+write_numbered_files "$CASE_DIR/records" "$(theme_field item)-reference-" ".dat" 28 "independent record"
+write_numbered_files "$CASE_DIR/recovery" "recovery-reference-" ".dat" 20 "recovery record"
 answer=$(printf '%s\n%s\n' "$first" "$second" | sort | awk 'NR==1 {a=$0} NR==2 {print a "|" $0}')
 write_readme "Find the two regular filenames under data/records and data/recovery that share one inode. Duplicate content is not sufficient evidence. Report just their basenames in lexical order.
 Answer format: name1|name2 including .dat, no spaces."

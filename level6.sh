@@ -12,6 +12,11 @@ make_sized "$CASE_DIR/candidates/$stem.dat" "$size"
 make_sized "$CASE_DIR/candidates/same-size.dat" "$size"
 make_sized "$CASE_DIR/candidates/same-mode.dat" "$((size + 7))"
 make_sized "$CASE_DIR/candidates/ordinary.dat" "$((size - 11))"
+i=1
+while [ "$i" -le 44 ]; do
+    make_sized "$CASE_DIR/candidates/$(theme_field file)-$i.dat" "$((size + 20 + i))"
+    i=$((i + 1))
+done
 printf 'Find the regular file in data/candidates with mode 0640 and exact size %s bytes. Report its filename without .dat.\n' "$size" > "$CASE_DIR/TASK.txt"
 write_readme "Use find with exact permission and byte-size predicates to compare the candidates against data/TASK.txt. Both the mode and exact byte size matter.
 Answer format: the lowercase filename stem only; omit .dat."

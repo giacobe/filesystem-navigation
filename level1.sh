@@ -8,6 +8,9 @@ place=$(theme_field place)
 mkdir -p "$CASE_DIR/$root/$place"
 printf '%s\n' "$answer" > "$CASE_DIR/$root/$place/coordinates.txt"
 printf 'training record\n' > "$CASE_DIR/$root/$place/notes.txt"
+mkdir -p "$CASE_DIR/$root/reference" "$CASE_DIR/archive"
+write_numbered_files "$CASE_DIR/$root/reference" "$(theme_field item)-" ".txt" 24 "reference record"
+write_numbered_files "$CASE_DIR/archive" "$(theme_field file)-" ".dat" 16 "archived record"
 write_readme "Use this absolute path to read the answer file:
 /srv/filesystem-navigation/cases/level1/$root/$place/coordinates.txt
 Answer format: exactly 12 Base64url characters. Case matters."

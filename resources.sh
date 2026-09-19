@@ -35,15 +35,42 @@ range_from_byte() {
     printf '%d\n' "$((minimum + byte % (maximum - minimum + 1)))"
 }
 
-base64url_digest() {
-    printf '%s' "$1" | base64 | tr -d '\r\n=' | tr '+/' '-_'
+base64url_raw_hex() {
+    printf '%s\n' "$1" | awk '''
+        function hv(c) {
+            if (c >= "0" && c <= "9") return c + 0
+            c = tolower(c)
+            return index("abcdef", c) + 9
+        }
+        function byte_at(text, pos) {
+            return hv(substr(text, pos, 1)) * 16 + hv(substr(text, pos + 1, 1))
+        }
+        BEGIN { alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" }
+        {
+            hex = $0
+            out = ""
+            for (i = 1; i <= length(hex); i += 6) {
+                remain = length(hex) - i + 1
+                a = byte_at(hex, i)
+                b = remain >= 4 ? byte_at(hex, i + 2) : 0
+                c = remain >= 6 ? byte_at(hex, i + 4) : 0
+                x1 = int(a / 4)
+                x2 = (a % 4) * 16 + int(b / 16)
+                x3 = (b % 16) * 4 + int(c / 64)
+                x4 = c % 64
+                out = out substr(alphabet, x1 + 1, 1) substr(alphabet, x2 + 1, 1)
+                if (remain >= 4) out = out substr(alphabet, x3 + 1, 1)
+                if (remain >= 6) out = out substr(alphabet, x4 + 1, 1)
+            }
+            print out
+        }
+    '''
 }
 
 answer_token() {
     length=$1
-    base64url_digest "$(derive_hex answer)" | cut -c "1-$length"
+    base64url_raw_hex "$(derive_hex answer)" | cut -c "1-$length"
 }
-
 pick_word() {
     label=$1
     shift
@@ -83,6 +110,19 @@ theme_field() {
         f:title) printf 'Interplanetary cargo company' ;; f:root) printf cargo ;; f:item) printf manifest ;; f:place) printf depot ;;
         *) die "unknown theme field: $THEME_INDEX:$field" ;;
     esac
+}
+
+write_numbered_files() {
+    directory=$1
+    prefix=$2
+    suffix=$3
+    count=$4
+    content=$5
+    i=1
+    while [ "$i" -le "$count" ]; do
+        printf '%s\n' "$content $i" > "$directory/${prefix}${i}${suffix}"
+        i=$((i + 1))
+    done
 }
 
 write_readme() {

@@ -31,3 +31,6 @@ All semantic answers, target names, layouts, sizes, and theme choices are determ
 ```text
 ...
 ```
+
+## Expanded population profile
+This architectural repair retains each level's unique target and collision controls while increasing the surrounding themed population. Added records are deterministic in count, do not alter answer derivation, and deliberately fail the target predicates or inode/link criteria.
